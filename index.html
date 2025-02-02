@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Il Dado delle Domande</title>
+    <link rel="manifest" href="/manifest.json">
+    <link rel="stylesheet" href="style.css">
+    <meta name="theme-color" content="#4CAF50">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-title" content="Dado Domande">
+    <link rel="apple-touch-icon" href="dadoIcon.png">
+    
+    
+</head>
+<body>
+
+    <nav> 
+        <a href="index.html">Dado</a>
+        <a href="info.html">Info</a>
+    </nav>
+    <main>
+        <h1>Dado</h1>
+    </main>
+
+    
+
+    <div class="app-container">
+        <h1 class="no-select">Dado delle Domande</h1>
+        
+        <div class="dice-container">
+            <img src="dadoNoBg.png" alt="Immagine Iniziale" class="dice-image active" id="img0">
+            <img src="perche.jpg" alt="Dado 1" class="dice-image" id="img1">
+            <img src="come.jpg" alt="Dado 2" class="dice-image" id="img2">
+            <img src="che.jpg" alt="Dado 3" class="dice-image" id="img3">
+        </div>
+
+        <div class="button-container">
+            <button onclick="rollDice()" id="rollButton">Lancia il Dado</button>
+            <button id="installButton" style="display: none;">Installa App</button>
+        </div>
+        
+        <div id="offlineMessage" class="offline-message">Sei offline, ma puoi continuare a usare l'app!</div>
+        <footer class="footer">
+            <p>© 2025 Il Dado delle Domande</p>
+            <p>by: <a href="https://www.adrianoparracciani.it/">Adriano Parracciani aka cyberparra</a></p>
+            
+        </footer>
+    </div>
+<script src="logic.js"></script>
+<script src="pwa.js"></script>
+
+<script>
+    // Registrazione del Service Worker
+    if ('serviceWorker' in navigator) {
+        window.addEventListener('load', () => {
+            navigator.serviceWorker.register('/pwa.js')
+                .then(registration => {
+                    console.log('ServiceWorker registrato con successo:', registration.scope);
+                })
+                .catch(error => {
+                    console.log('Registrazione ServiceWorker fallita:', error);
+                });
+        });
+    }
+</script>
+   
+</body>
+</html>
